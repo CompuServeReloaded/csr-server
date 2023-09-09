@@ -1,9 +1,19 @@
-﻿namespace CSRServer;
+﻿using CSRServer.Utilities;
+using Serilog;
+using Serilog.Core;
+
+namespace CSRServer;
 
 internal class Program 
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
+        // Set up logging
+        Log.Logger = new LoggerConfiguration()
+            .WriteTo.CompuServeSink()
+            .CreateLogger();
+
+        // Test logging
+        Log.Information("Hello, CompuServe!");
     }
 }
